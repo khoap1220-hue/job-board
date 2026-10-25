@@ -167,7 +167,7 @@ CREATE TABLE public.developer_profile (
     email character varying(255) NOT NULL,
     location character varying(255) NOT NULL,
     available boolean NOT NULL,
-    linkedin_url character varying(255) NOT NULL,
+    linkedin_url character varying(255),
     image_id character(27) NOT NULL,
     slug character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -176,7 +176,21 @@ CREATE TABLE public.developer_profile (
     name character varying(255) NOT NULL,
     bio text NOT NULL,
     github_url character varying(255) DEFAULT NULL::character varying,
-    twitter_url character varying(255) DEFAULT NULL::character varying
+    twitter_url character varying(255) DEFAULT NULL::character varying,
+    cv bytea
+);
+
+
+--
+-- Name: developer_cv_download; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.developer_cv_download (
+    id character(27) NOT NULL,
+    developer_profile_id character(27) NOT NULL,
+    cv bytea NOT NULL,
+    user_id character(27) NOT NULL,
+    downloaded_at timestamp without time zone NOT NULL
 );
 
 
